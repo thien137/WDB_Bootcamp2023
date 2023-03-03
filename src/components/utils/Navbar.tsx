@@ -1,7 +1,5 @@
-import Logo from "../../public/Vector.svg"
+import Logo from "../../public/Vector.svg";
 
 export default function Navbar() {
-    return (
-        <div>asd</div>
-    );
+  return <div>asd</div>;
 }

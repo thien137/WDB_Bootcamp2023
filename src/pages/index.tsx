@@ -5,12 +5,14 @@ import { ReactNode, useState, ReactComponent } from "react";
 import Logo from "../../public/Vector.svg";
 import Notiom from "../../public/Notiom.svg";
 import Create from "../../public/Create. Explore..svg";
-import Document from "../../public/document.svg";
+import GrayBoxument from "../../public/GrayBoxument.svg";
 import Blue from "../../public/Create Button.svg";
-import DocPlus from "../../public/Group 1.svg";
-import Text from "../../public/Group 4.svg";
+import GrayBoxPlus from "../../public/Group 1.svg";
+import GrayBox from "../../public/Group 4.svg";
 import ButtonLink from "../components/utils/ButtonLink";
 import NextLink from "../components/utils/NextLink";
+
+import DocPreview from "../components/DocPreview";
 
 export default function Home() {
   const [child, setChild] = useState<object | null>(null);
@@ -45,48 +47,46 @@ export default function Home() {
           </Flex>
           <Flex direction="column" align="center">
             <Box>
-              <Document />
+              <GrayBoxument />
             </Box>
           </Flex>
           <Spacer />
           <Flex direction="row" px={10} justify="space-between">
+            <DocPreview text="Hello World!" />
             <Box>
-              <DocPlus />
+              <GrayBox />
             </Box>
             <Box>
-              <Text />
+              <GrayBox />
             </Box>
             <Box>
-              <Text />
+              <GrayBox />
             </Box>
             <Box>
-              <Text />
+              <GrayBox />
             </Box>
             <Box>
-              <Text />
-            </Box>
-            <Box>
-              <Text />
+              <GrayBox />
             </Box>
           </Flex>
           <Flex direction="row" px={10} justify="space-between">
             <Box>
-              <Text />
+              <GrayBox />
             </Box>
             <Box>
-              <Text />
+              <GrayBox />
             </Box>
             <Box>
-              <Text />
+              <GrayBox />
             </Box>
             <Box>
-              <Text />
+              <GrayBox />
             </Box>
             <Box>
-              <Text />
+              <GrayBox />
             </Box>
             <Box>
-              <Text />
+              <GrayBox />
             </Box>
           </Flex>
         </Flex>
