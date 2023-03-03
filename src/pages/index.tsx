@@ -1,8 +1,8 @@
-import { Box, Stack, Heading } from "@chakra-ui/layout";
-import { Button, Icon, Image } from "@chakra-ui/react";
+import { Box, Stack } from "@chakra-ui/layout";
+import { Icon, HStack, Image } from "@chakra-ui/react";
 import Head from "next/head";
-import { React, ReactNode, useState } from "react";
-import logo from "../../public/Vector.svg";
+import { ReactNode, useState, ReactComponent } from "react";
+import Logo from "../../public/Vector.svg";
 import ButtonLink from "../components/utils/ButtonLink";
 import NextLink from "../components/utils/NextLink";
 
@@ -14,9 +14,9 @@ export default function Home() {
         <title>TODO: page title</title>
       </Head>
       <Stack p={4}>
-        <Icon viewBox="0 0 48 48" width="10" height="10" color="red.500">
-          <Image src={logo} alt="hi" />
-        </Icon>
+        <Box>
+          <Logo />
+        </Box>
         <Icon fill="none" viewBox="0 0 138 30" width="60" height="15">
           <path
             fill="#545454"
