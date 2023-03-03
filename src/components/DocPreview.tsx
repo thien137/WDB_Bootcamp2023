@@ -1,11 +1,9 @@
-import { Box, Text } from "@chakra-ui/layout";
-import GrayBox from "../../public/Group 4.svg";
+import { Button } from "@chakra-ui/react";
 
-export function DocPreview({ text: string }) {
+export function DocPreview({ text }) {
   return (
-    <Box>
-      <GrayBox />
-      <Text>{text}</Text>
-    </Box>
+    <Button height="150px" width="150px" border="2px" borderColor="green.500">
+      {text}
+    </Button>
   );
 }
