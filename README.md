@@ -146,3 +146,8 @@ This is a list of recommended VS Code extensions that will make development easi
 - [DotENV](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv) - enables syntax highlighting for `.env` files
 - [JavaScript Language Support](https://marketplace.visualstudio.com/items?itemName=mgmcdermott.vscode-language-babel) - enables syntax highlighting for JavaScript/TypeScript files
 - [Auto Rename Tag](formulahendry.auto-rename-tag) - automatically renames matching opening and closing tags when you rename one of them (definitely the most optional one on this list)
+
+# NPM Commands Just In Case
+- nvm install node # install node/npm
+- yarn add --dev @svgr/webpack # get webpack
+- yarn dev # run code
