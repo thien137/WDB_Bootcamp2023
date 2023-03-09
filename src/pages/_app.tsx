@@ -1,3 +1,4 @@
+import "@fontsource/dm-sans/400.css";
 import { AppProps } from "next/app";
 import {
   ChakraProvider,
