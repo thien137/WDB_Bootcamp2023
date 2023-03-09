@@ -1,11 +1,12 @@
 import { Box, Text } from "@chakra-ui/layout";
+
 import GrayBox from "../../public/Group 4.svg";
 
-export function DocPreview({ text: string }) {
+export default function DocPreview({ text }) {
   return (
     <Box>
-      <GrayBox />
       <Text>{text}</Text>
+      <GrayBox />
     </Box>
   );
 }

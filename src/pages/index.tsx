@@ -1,17 +1,17 @@
 import { Box, Stack } from "@chakra-ui/layout";
-import { Flex, Icon, VStack, HStack, Image, Spacer} from "@chakra-ui/react";
+import { Flex, Icon, VStack, HStack, Image, Spacer } from "@chakra-ui/react";
 import Head from "next/head";
 import { ReactNode, useState, ReactComponent } from "react";
+
 import Logo from "../../public/Vector.svg";
 import Notiom from "../../public/Notiom.svg";
 import Create from "../../public/Create. Explore..svg";
-import GrayBoxument from "../../public/GrayBoxument.svg";
+import GrayBoxument from "../../public/document.svg";
 import Blue from "../../public/Create Button.svg";
 import GrayBoxPlus from "../../public/Group 1.svg";
 import GrayBox from "../../public/Group 4.svg";
 import ButtonLink from "../components/utils/ButtonLink";
 import NextLink from "../components/utils/NextLink";
-
 import DocPreview from "../components/DocPreview";
 
 export default function Home() {
@@ -52,10 +52,10 @@ export default function Home() {
           </Flex>
           <Spacer />
           <Flex direction="row" px={10} justify="space-between">
-            <DocPreview text="Hello World!" />
             <Box>
-              <GrayBox />
+              <GrayBoxPlus />
             </Box>
+            <DocPreview text="Hello World!" />
             <Box>
               <GrayBox />
             </Box>
