@@ -1,5 +1,4 @@
 import { Box, IconButton } from "@chakra-ui/react";
-import { React } from "react";
 
 import GrayBoxPlus from "../../public/Group 1.svg";
 
