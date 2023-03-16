@@ -37,6 +37,7 @@ export default function Home() {
               preview={item.preview}
               text={item.text}
               ind={index}
+              array={notiomDocs}
               func={setNotiomDocs}
             />
           </WrapItem>

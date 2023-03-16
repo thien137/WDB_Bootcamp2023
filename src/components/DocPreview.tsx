@@ -22,10 +22,17 @@ interface DocPreviewProps {
   preview: string;
   text: string;
   index: number;
+  array: NotiomDoc[];
   func: Function;
 }
 
-export default function DocPreview({ preview, text, index, func }: DocPreviewProps) {
+export default function DocPreview({
+  preview,
+  text,
+  index,
+  array,
+  func,
+}: DocPreviewProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -50,7 +57,7 @@ export default function DocPreview({ preview, text, index, func }: DocPreviewPro
           <ModalHeader>Modal Title</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text contentEditable="true" id="editor">
+            <Text contentEditable="true" id={`editor${index}`}>
               {text}
             </Text>
           </ModalBody>
@@ -61,7 +68,13 @@ export default function DocPreview({ preview, text, index, func }: DocPreviewPro
             </Button>
             <Button
               variant="ghost"
-              onClick="getElementById('demo').innerHTML = Hii"
+              onClick={() =>
+                saveDoc(
+                  index,
+                  array,
+                  document.getElementById(`editor${index}`).innerHTML
+                )
+              }
             >
               Save
             </Button>
@@ -70,6 +83,16 @@ export default function DocPreview({ preview, text, index, func }: DocPreviewPro
       </Modal>
     </Box>
   );
+}
+
+interface SaveDocProps {
+  index: number;
+  array: NotiomDoc[];
+  newText: string;
+}
+
+function saveDoc({ index, array, newText }: SaveDocProps) {
+  array[index].text = newText;
 }
 
 /**
