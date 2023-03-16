@@ -13,15 +13,23 @@ import {
 } from "@chakra-ui/react";
 import { React } from "react";
 
-interface DocPreviewProps {
+interface NotiomDoc {
+  preview: string;
   text: string;
 }
 
-export default function DocPreview({ text }: DocPreviewProps) {
+interface DocPreviewProps {
+  preview: string;
+  text: string;
+  index: number;
+  func: Function;
+}
+
+export default function DocPreview({ preview, text, index, func }: DocPreviewProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box>
+    <Box padding={0.475}>
       <Button
         h="150px"
         w="150px"
@@ -32,7 +40,7 @@ export default function DocPreview({ text }: DocPreviewProps) {
         onClick={onOpen}
       >
         <Text padding={2} fontSize={20} textAlign="left" textColor="#545454">
-          {text}
+          {preview}
         </Text>
       </Button>
 
@@ -42,17 +50,35 @@ export default function DocPreview({ text }: DocPreviewProps) {
           <ModalHeader>Modal Title</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text>Hello World!</Text>
+            <Text contentEditable="true" id="editor">
+              {text}
+            </Text>
           </ModalBody>
 
           <ModalFooter>
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button variant="ghost">Secondary Action</Button>
+            <Button
+              variant="ghost"
+              onClick="getElementById('demo').innerHTML = Hii"
+            >
+              Save
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
     </Box>
   );
 }
+
+/**
+function saveDoc(docPreview{ preview, index, docArray, func }: DocPreviewProps) {
+  const editor = document.getElementById("editor");
+  let dos = " ";
+
+  editor.addEventListener("input", (e) => {
+    dos = e.target.innerHTML;
+  });
+}
+*/

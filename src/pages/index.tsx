@@ -1,17 +1,49 @@
-import { Stack, Flex, Spacer } from "@chakra-ui/react";
+import { Stack, Flex, Spacer, Wrap, WrapItem } from "@chakra-ui/react";
 import Head from "next/head";
 import { ReactNode, useState, ReactComponent } from "react";
 
 import Navbar from "../components/utils/Navbar";
 import Banner from "../components/utils/Banner";
-import DocRow from "../components/utils/DocRow";
-import DocRowPlus from "../components/utils/DocRowPlus";
+import DocNew from "../components/DocNew";
+import DocPreview from "../components/DocPreview";
 
 export default function Home() {
-  const [modals, setModals] = useState([]);
+  interface NotiomDoc {
+    preview: string;
+    text: string;
+  }
 
-  const createDoc = () => {}
-  
+  const [notiomDocs, setNotiomDocs] = useState<NotiomDoc[]>([]);
+
+  const createDefaultDoc = () => {
+    setNotiomDocs((oldModals) => [
+      ...oldModals,
+      {
+        preview: "Hello World",
+        text: "Hello World!",
+      },
+    ]);
+  };
+
+  const renderModals = () => {
+    return (
+      <Wrap justify="space-evenly">
+        <WrapItem>
+          <DocNew onClick={createDefaultDoc} />
+        </WrapItem>
+        {notiomDocs.map((item, index) => (
+          <WrapItem key={item.preview}>
+            <DocPreview
+              preview={item.preview}
+              text={item.text}
+              ind={index}
+              func={setNotiomDocs}
+            />
+          </WrapItem>
+        ))}
+      </Wrap>
+    );
+  };
   return (
     <>
       <Head>
@@ -27,8 +59,7 @@ export default function Home() {
           <Navbar />
           <Banner />
           <Spacer />
-          <DocRowPlus onClick={createDoc} />
-          <DocRow />
+          {renderModals()}
         </Flex>
       </Stack>
     </>

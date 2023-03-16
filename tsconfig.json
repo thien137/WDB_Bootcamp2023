@@ -15,7 +15,8 @@
     "incremental": true,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "allowJs": true
+    "allowJs": true,
+    "noImplicitAny": false
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
