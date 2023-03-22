@@ -1,41 +1,22 @@
-import {
-  Stack,
-  Flex,
-  Spacer,
-  Wrap,
-  WrapItem,
-  Box,
-  Button,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Button, Text } from "@chakra-ui/react";
 import { React } from "react";
-
-interface NotiomDoc {
-  preview: string;
-  text: string;
-}
 
 interface DocPreviewProps {
   preview: string;
   text: string;
-  index: number;
-  array: NotiomDoc[];
-  func: Function;
+  ind: number;
   openModal: Function;
+  setIdFunc: Function;
+  setDocFunc: Function;
 }
-
-// interface UpdatedDocPreviewProps {
-//   doc: NotiomDoc;
-//   openModal: Function;
-// }
 
 export default function DocPreview({
   preview,
   text,
-  index,
-  array,
-  func,
+  ind,
   openModal,
+  setIdFunc,
+  setDocFunc,
 }: DocPreviewProps) {
   return (
     <Box padding={0.475}>
@@ -47,6 +28,8 @@ export default function DocPreview({
         border="2px solid #A3A3A3"
         padding={2}
         onClick={() => {
+          setIdFunc(ind);
+          setDocFunc(text);
           openModal();
         }}
       >
@@ -57,29 +40,3 @@ export default function DocPreview({
     </Box>
   );
 }
-
-// function saveDoc(func, index, newText) {
-//   func((oldModals) => {
-//     return oldModals.map((c, i) => {
-//       if (i == index) {
-//         return {
-//           preview: c.preview,
-//           text: newText,
-//         };
-//       } else {
-//         return c;
-//       }
-//     });
-//   });
-// }
-
-/**
-function saveDoc(docPreview{ preview, index, docArray, func }: DocPreviewProps) {
-  const editor = document.getElementById("editor");
-  let dos = " ";
-
-  editor.addEventListener("input", (e) => {
-    dos = e.target.innerHTML;
-  });
-}
-*/
