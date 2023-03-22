@@ -131,7 +131,7 @@ export default function Home() {
             <Button
               variant="ghost"
               onClick={() => {
-                updateDoc(docID, document.getElementById("txt").innerHTML);
+                updateDoc(docID, document.getElementById("txt").innerText);
               }}
             >
               Save
