@@ -4,7 +4,6 @@ import {
   Spacer,
   Wrap,
   WrapItem,
-  Box,
   Button,
   Text,
   useDisclosure,
@@ -17,7 +16,7 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 import Head from "next/head";
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 
 import Navbar from "../components/utils/Navbar";
 import Banner from "../components/utils/Banner";
@@ -30,32 +29,45 @@ export default function Home() {
     text: string;
   }
 
-  const [ notiomDocs, setNotiomDocs ] = useState<NotiomDoc[]>([]);
+  const [notiomDocs, setNotiomDocs] = useState<NotiomDoc[]>([]);
 
   // Call useDisclosure here + have the modal state live up here
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   // Have a state for which doc ID i'm currently updating
-  const [ docID, setDocID ] = useState<number>();
+  const [docID, setDocID] = useState<number>();
 
   // Have a state for doc you are updating - just the content string state
-  const [ docContent, setDocContent ] = useState<string>();
+  const [docContent, setDocContent] = useState<string>();
 
   const createDefaultDoc = () => {
+    setDocID(notiomDocs.length);
+    setDocContent("<Please type text here>");
+    setNotiomDocs((oldModals) => {
+      return [
+        ...oldModals,
+        {
+          preview: "",
+          text: "<Please type text here>",
+        },
+      ];
+    });
     onOpen();
-    setNotiomDocs((oldModals) => [
-      ...oldModals,
-      {
-        preview: "Hello World",
-        text: "Hello World!",
-      },
-    ]);
   };
 
   // Defined updateDocfunctio here - takes in a parameter (newDoc)
   const updateDoc = (id, newContent) => {
     // go through the state array of notiom docs and update the right one by ID
-    return 5;
+    setNotiomDocs((existingModals) => {
+      return [
+        ...existingModals.slice(0, id),
+        {
+          preview: newContent.slice(0, 40) + "...",
+          text: newContent,
+        },
+        ...existingModals.slice(id + 1),
+      ];
+    });
   };
 
   const renderModals = () => {
@@ -70,22 +82,23 @@ export default function Home() {
               preview={item.preview}
               text={item.text}
               ind={index}
-              array={notiomDocs}
-              func={setNotiomDocs}
               openModal={onOpen}
               // Pass down the id state and the setState to change the id
-              // Pass down the context state and the setContext functio to change the current content of the doc im updating right now
+              setIdFunc={setDocID}
+              // Pass down the content state and the setContent functio to change the current content of the doc im updating right now
+              setDocFunc={setDocContent}
             />
           </WrapItem>
         ))}
       </Wrap>
     );
   };
+
   return (
     <>
       {/* Have your modal render here + call the useDisclosure hook here */}
       <Head>
-        <title>TODO: page title</title>
+        <title>WDB Bootcamp Project</title>
       </Head>
       <Stack p={4}>
         <Flex
@@ -103,12 +116,12 @@ export default function Home() {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>Document {docID + 1}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            {/* <Text contentEditable="true" id={`editor${index}`}>
-              {text}
-            </Text> */}
+            <Text contentEditable="true" id="txt">
+              {docContent}
+            </Text>
           </ModalBody>
 
           <ModalFooter>
@@ -117,15 +130,9 @@ export default function Home() {
             </Button>
             <Button
               variant="ghost"
-              onClick={() =>
-                // updateDoc(id_state, content_state) - WORK WITH THIS
-
-                // saveDoc(
-                //   func,
-                //   index,
-                //   document.getElementById(`editor${index}`).innerHTML
-                // )
-              }
+              onClick={() => {
+                updateDoc(docID, document.getElementById("txt").innerText);
+              }}
             >
               Save
             </Button>
