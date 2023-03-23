@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-// Replace the uri string with your MongoDB deployment's connection string.
+// Replace the string with your MongoDB deployment's connection string.
 const uri =
   "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.2";
 
